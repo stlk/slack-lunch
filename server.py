@@ -67,7 +67,7 @@ def get_restaurants(location, lat, lng, response_url):
     ]
 
     text = "\n\n".join([menu for menu in daily_menus if menu])
-    text = text or "Nothing found"
+    text = text or "Nothing found :space_invader:"
     response = requests.post(
         response_url, json={"response_type": "in_channel", "text": text, "mrkdwn": True}
     )
