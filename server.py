@@ -2,6 +2,7 @@ import logging
 import os
 import pprint
 import requests
+import datetime
 import background
 from logging.handlers import SysLogHandler
 from typing import NamedTuple
@@ -27,6 +28,11 @@ def zomato_api_call(path):
     response.raise_for_status()
     return response.json()
 
+def format_dish(dish):
+    dish_price = dish["dish"]["price"]
+    if dish_price:
+        dish_price = f"*{dish_price}*"
+    return dish["dish"]["name"] + " " + dish_price
 
 def try_get_daily_menu(restaurant):
     restaurant_id = restaurant["restaurant"]["id"]
@@ -37,10 +43,10 @@ def try_get_daily_menu(restaurant):
         if menu["daily_menus"]:
             menu_data = menu["daily_menus"][0]["daily_menu"]
             restaurant_name = restaurant["restaurant"]["name"]
-            menu_date = menu_data["start_date"]
+            menu_date = datetime.datetime.fromisoformat(menu_data["start_date"]).strftime("%A, %d. %B")
             dishes = "\n".join(
                 [
-                    dish["dish"]["name"] + " *" + dish["dish"]["price"] + "*"
+                    format_dish(dish)
                     for dish in menu_data["dishes"]
                 ]
             )
