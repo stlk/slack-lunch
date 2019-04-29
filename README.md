@@ -35,3 +35,7 @@ now secrets add OPENCAGEDATA_API_KEY your-secret-key
 # Deploy
 now
 ```
+
+### Usage
+
+Configure your [Slash Command](https://api.slack.com/slash-commands) to use `/slash` endpoint. The app uses `text` and `response_url`.
