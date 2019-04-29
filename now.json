@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "name": "slack-food",
+    "alias": "slack-food",
+    "env": {
+        "OPENCAGEDATA_API_KEY": "@opencagedata_api_key",
+        "ZOMATO_API_KEY": "@zomato_api_key"
+    },
+    "builds": [
+        {
+            "src": "**/index.py",
+            "use": "@now/python@canary"
+        }
+    ]
+}

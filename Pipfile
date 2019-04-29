@@ -8,17 +8,14 @@ flask = "*"
 "rfc3339" = "*"
 ansicolors = "*"
 requests = "*"
-slackclient = "*"
-background = {git = "https://github.com/kennethreitz/background.git"}
-waitress = "*"
 
 [dev-packages]
 pytest = "*"
-black = "==18.4a4"
+black = "==19.3b0"
 pre-commit = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
 
 [scripts]
 dev = "flask run"
